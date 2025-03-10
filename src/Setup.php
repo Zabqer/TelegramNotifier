@@ -10,7 +10,7 @@ use MediaWiki\MediaWikiServices;
 
 class Setup {
 	public static function onRegistration() {
-		$GLOBALS["wgEchoNotifiers"]["telegram"] = ["TelegramNotifier", "notifyWithTelegram"];
+		$GLOBALS["wgEchoNotifiers"]["telegram"] = ["MediaWiki\\Extension\\TelegramNotifier\\TelegramNotifier", "notifyWithTelegram"];
 		$GLOBALS["wgDefaultNotifyTypeAvailability"]["telegram"] = true;
 	}
 }

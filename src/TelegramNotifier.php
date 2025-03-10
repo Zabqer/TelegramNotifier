@@ -1,10 +1,13 @@
 <?php
 
+namespace MediaWiki\Extension\TelegramNotifier;
+
 use MediaWiki\MediaWikiServices;
 use EchoEvent;
 use MediaWiki\Extension\Notifications\Formatters\EchoEventFormatter;
 use MediaWiki\Extension\Notifications\Services;
 use User;
+use EchoEventPresentationModel;
 use MediaWiki\Parser\Sanitizer;
 
 function TelegramSendMessage($token, $chatID, $message) {
@@ -77,7 +80,7 @@ class TelegramNotifier {
     public static function notifyWithTelegram( User $user, EchoEvent $event ) {
 		$attributeManager = Services::getInstance()->getAttributeManager();
 		$userTelegramNotifications = $attributeManager->getUserEnabledEvents($user, "telegram");
-		if (!in_array($event->getType(), $userTelegramNotifications)) {
+		if ($event->getType() != "welcome" && !in_array($event->getType(), $userTelegramNotifications)) {
 			return;
 		}
 

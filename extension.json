@@ -3,7 +3,7 @@
 	"author": "Alexey <Zabqer> Gutnik",
 	"url": "https://github.com/zabqer/TelegramNotifier",
 	"description": "This extension allow to send notification through telegram",
-	"version": "1.0",
+	"version": "1.1",
 	"type": "other",
 	"license-name": "GPL-2.0-or-later",
 	"manifest_version": 2,
@@ -23,5 +23,8 @@
 	},
 	"AutoloadClasses": {
 		"TelegramNotifier": "./src/TelegramNotifier.php"
+	},
+	"Hooks": {
+		"LocalUserCreated": "MediaWiki\\Extension\\TelegramNotifier\\Hooks::onLocalUserCreated"
 	}
 }
